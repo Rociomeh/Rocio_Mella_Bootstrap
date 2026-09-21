@@ -1,0 +1,8 @@
+[
+    {"id": 1, "nombre": "Bolsa Negro Conejo", "precio": 10500, "imagen": "assets/imgs/img1.jpg"},
+    {"id": 2, "nombre": "Bolsa Malla", "precio": 12000, "imagen": "assets/imgs/img2.jpg"},
+    {"id": 3, "nombre": "Bolsa Hasta los huevos", "precio": 15000, "imagen": "assets/imgs/img3.jpg"},
+    {"id": 4, "nombre": "Bolsa Porta Vino", "precio": 17500, "imagen": "assets/imgs/img4.jpg"},
+    {"id": 5, "nombre": "Bolsa Verde Cocodrilo", "precio": 11900, "imagen": "assets/imgs/img5.jpg"},
+    {"id": 6, "nombre": "Bolsa Just Brown", "precio": 11900, "imagen": "assets/imgs/img6.jpg"}
+  ]

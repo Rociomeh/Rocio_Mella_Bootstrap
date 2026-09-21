@@ -12,153 +12,205 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-  <!--Barra de Navegación -->
-  <nav class="navbar navbar-expand-lg">
+
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid"> 
       <a class="navbar-brand" href="#">
         <img src="assets/imgs/logo-white.png" alt="logo">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light " href="#">Bolsas</a>
-          </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link text-light" href="#">Tote Bags</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#">Bolsas de Malla</a></li>
         </ul>
+        <!-- Formulario de búsqueda (Evento Submit) -->
+        <form class="d-flex me-3" id="form-busqueda" role="search">
+          <input class="form-control me-2" type="search" id="input-busqueda" placeholder="Buscar producto..." aria-label="Buscar">
+          <button class="btn btn-outline-light" type="submit">Buscar</button>
+        </form>
+        <button class="btn btn-dark ms-lg-3 mt-2 mt-lg-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas" aria-controls="carritoOffcanvas">
+          🛒 Carrito (<span id="contador-carrito">0</span>)
+        </button>
       </div>
     </div> 
   </nav>
-  <!--Sección de Carrusel -->
-    <div class="container mt-4 mb-5">
-      <div id="carruselProductos" class="carousel slide" data-bs-ride="carousel">
-        <!--Imágenes del carrusel con intervalo de 3 segundos -->
-        <div class="carousel-inner rounded shadow-sm">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <img src="assets/imgs/img1.jpg" class="d-block w-100 carrusel-img" alt="Producto 1">
+
+  <!-- Sección de Carrusel -->
+  <div class="container mt-4 mb-5">
+    <div id="carruselProductos" class="carousel slide" data-bs-ride="carousel">
+      <!-- Imágenes del carrusel con intervalo de 3 segundos -->
+      <div class="carousel-inner rounded shadow-sm">
+        <div class="carousel-item active" data-bs-interval="3000">
+          <img src="assets/imgs/img1.jpg" class="d-block w-100 carrusel-img" alt="Producto 1">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="assets/imgs/img5.jpg" class="d-block w-100 carrusel-img" alt="Producto 2">
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+          <img src="assets/imgs/img2.jpg" class="d-block w-100 carrusel-img" alt="Producto 3">
+        </div>
+      </div>
+      <!-- Controles de navegación -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carruselProductos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carruselProductos" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+  </div>
+
+  <section class="container mt-5">
+    <div id="mensaje-error"></div>
+
+    <!-- Contenedor dinámico manipulado por JS -->
+    <div class="row g-4" id="product-container">
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img1.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Negro Conejo</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="1">Añadir al carrito</button>
           </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="assets/imgs/img5.jpg" class="d-block w-100 carrusel-img" alt="Producto 2">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="assets/imgs/img2.jpg" class="d-block w-100 carrusel-img" alt="Producto 3">
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $10.500</small>
           </div>
         </div>
-        <!--Controles de navegación -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carruselProductos" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carruselProductos" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img2.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Malla</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="2">Añadir al carrito</button>
+          </div>
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $12.000</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img3.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Hasta los huevos</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="3">Añadir al carrito</button>
+          </div>
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $15.000</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img4.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Porta Vino</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="4">Añadir al carrito</button>
+          </div>
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $17.500</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img5.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Verde Cocodrilo</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="5">Añadir al carrito</button>
+          </div>
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $11.900</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card h-100">
+          <img src="assets/imgs/img6.jpg" class="card-img-top" alt="ToteBag">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title">Bolsa Just Brown</h5>
+              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted"> todobolsas</i></a>
+            </div>
+            <button class="btn btn-outline-dark w-100 mt-3 btn-agregar" data-id="6">Añadir al carrito</button>
+          </div>
+          <div class="card-footer text-end">
+            <small class="text-muted">Precio: $11.900</small>
+          </div>
+        </div>
       </div>
     </div>
-    <section class="container mt-5">
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img1.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Negro Conejo</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a> 
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $10.500</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img2.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Malla</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a>
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $12.000</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img3.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Hasta los huevos</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a> 
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $15.000</small>
-            </div>
-          </div>
-        </div>
+  </section>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="carritoOffcanvas" aria-labelledby="carritoOffcanvasLabel">
+    <div class="offcanvas-header bg-dark text-white">
+      <h5 class="offcanvas-title" id="carritoOffcanvasLabel">Resumen de Compra</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <ul id="lista-carrito" class="list-group mb-3">
+        </ul>
       </div>
-      <div class="row mt-5">
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img4.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Porta Vino</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a>
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $17.500</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img5.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Verde Cocodrilo</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a>
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $11.900</small>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-4">
-          <div class="card h-100">
-            <img src="assets/imgs/img6.jpg" class="card-img-top" alt="ToteBag">
-            <div class="card-body">
-              <h5 class="card-title">Bolsa Just Brown</h5>
-              <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram text-muted">todobolsas</i></a> 
-            </div>
-            <div class="card-footer text-end">
-              <small class="text-muted">Precio: $11.900</small>
-            </div>
-          </div>
-        </div>
+      <div class="border-top pt-3">
+        <h4 class="d-flex justify-content-between">
+          <span>Total:</span>
+          <span>$<span id="total-carrito">0</span></span>
+        </h4>
       </div>
-    </section>
-    <!--Pie de Página (Footer) -->
-    <footer class="pb-3 my-5">
-      <div class="text-white">
-        <div class="row">
-          <div class="col">
-            <p class="fs-4 mt-5">Recibe cupones en tu correo</p>
-          </div>
-          <form class="mb-3">
-            <label for="nombre" class="form-label"></label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
-            <label for="email" class="form-label"></label>
-            <input type="text" class="form-control" id="email" placeholder="Correo" required>         
-          </form>
-        </div>
-      </div>
-      <a class="btn btn-light">Enviar</a>
-    </footer>
-  <div class="logo">
-    <img src="assets/imgs/logo-black.png" class="img-fluid">
+    </div>
   </div>
-  <p class="text-center text-muted"><i class="fa-regular fa-copyright">2018 todobolsas LATAM. Todos los derechos reservados</i></p>
+
+  <!-- Pie de Página (Footer) -->
+  <footer class="pb-3 my-5">
+    <div class="text-white">
+      <div class="row">
+        <div class="col">
+          <p class="fs-4 mt-5">Recibe cupones en tu correo</p>
+        </div>
+        <form class="mb-3">
+          <label for="nombre" class="form-label"></label>
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+          <label for="email" class="form-label"></label>
+          <input type="text" class="form-control" id="email" placeholder="Correo" required>         
+        </form>
+      </div>
+    </div>
+    <a class="btn btn-light">Enviar</a>
+  </footer>
+
+  <div class="logo">
+    <img src="assets/imgs/logo-black.png" class="img-fluid" alt="logo footer">
+  </div>
+  <p class="text-center text-muted"><i class="fa-regular fa-copyright"> 2018 todobolsas LATAM. Todos los derechos reservados</i></p>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/33bf44000f.js" crossorigin="anonymous"></script>
+  
+  <!-- Enlace a la lógica dinámica de JavaScript -->
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
